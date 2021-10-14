@@ -33,7 +33,9 @@ bot.on("message", async (ctx) => {
     const check = functions.checkUser(ctx.chat.id);
     console.log(check);
     if (!check) {
-        ctx.reply(`${localization.error.uz} \n\n${localization.error.ru}`);
+        return ctx.reply(
+            `${localization.error.uz} \n\n${localization.error.ru}`
+        );
     }
 
     const user = await ctx.telegram.getChatMember(
