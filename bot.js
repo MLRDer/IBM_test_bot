@@ -31,7 +31,6 @@ bot.command("start", (ctx) => {
 
 bot.on("message", async (ctx) => {
     const check = functions.checkUser(ctx.chat.id);
-    console.log(check);
     if (!check) {
         return ctx.reply(
             `${localization.error.uz} \n\n${localization.error.ru}`

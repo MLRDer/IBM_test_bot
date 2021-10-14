@@ -84,8 +84,6 @@ exports.createResultMessage = (text, language) => {
 };
 
 exports.languageSelection = (ctx) => {
-    console.log(ctx.wizard.cursor);
-
     ctx.reply(
         `Salom ${ctx.from.first_name}, tilni tanlang:\nПривет ${ctx.from.first_name}, выберите язык:`,
         Markup.keyboard([["O'zbek", "Pусский"]])
@@ -100,7 +98,6 @@ exports.languageSelection = (ctx) => {
 
 exports.fullnameGetter = (ctx) => {
     if (!ctx.wizard.state.language) {
-        console.log("Language");
         let language = ctx.message.text;
         if (language == "O'zbek") language = "uz";
         else if (language == "Pусский") language = "ru";
@@ -180,7 +177,6 @@ exports.warningMessage = async (ctx) => {
         ctx.wizard.state.class = ctx.message.text;
         ctx.wizard.state.id = ctx.chat.id;
 
-        ctx.reply(ctx.wizard.state);
         let user = getUserData(ctx.chat.id, ctx.wizard.state);
         console.log(user);
         ctx.reply(localization.warning[ctx.wizard.state.language || "uz"]);
